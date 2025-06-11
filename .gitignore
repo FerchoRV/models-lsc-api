@@ -1,0 +1,13 @@
+_env/
+
+*.env
+
+datasets/
+
+requirements_full.txt
+
+deploy-model-api.ps1
+
+.dockerignore
+
+__pycache__/
