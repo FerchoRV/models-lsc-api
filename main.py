@@ -5,8 +5,11 @@ import tensorflow as tf
 from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
 import constants
-
+from flask_cors import CORS # Importa la extensión CORS
 app = Flask(__name__)
+
+origins = ["http://localhost:3000", "https://www.colsign.com.co", "https://colsigns-app.vercel.app"]
+CORS(app, origins=origins)
 
 # Rutas de los modelos (ajusta si tus modelos están en otro lugar)
 # Cloud Run buscará estos archivos en la misma carpeta que main.py
@@ -166,7 +169,7 @@ def predict_recognition_words_v2():
         predicted_class_index = np.argmax(predictions, axis=1)[0]
         
         # Mapear el índice a una etiqueta legible
-        predicted_sign_label = SIGN_LABELS_wordsv2[predicted_class_index] if predicted_class_index < len(SIGN_LABELS_alphabet) else f"clase_desconocida_{predicted_class_index}"
+        predicted_sign_label = SIGN_LABELS_wordsv2[predicted_class_index] if predicted_class_index < len(SIGN_LABELS_wordsv2) else f"clase_desconocida_{predicted_class_index}"
 
         # Devolver la predicción y las probabilidades
         return jsonify({
