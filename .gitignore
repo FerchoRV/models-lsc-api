@@ -1,14 +1,42 @@
+# Entornos virtuales
 _env/
+venv/
+env/
 
+# Variables de entorno
 *.env
+.env
 
+# Datasets (pueden ser grandes)
 datasets/
 
+# Archivos de dependencias completas
 requirements_full.txt
 requirements_redorted.txt
 
-deploy-model-api.ps1
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
 
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos temporales
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos de Docker (mantener .dockerignore)
 .dockerignore
 
-__pycache__/

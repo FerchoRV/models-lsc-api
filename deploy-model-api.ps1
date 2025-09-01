@@ -1,10 +1,10 @@
 # CONFIGURACIÓN INICIAL
-$PROJECT_ID = "Tu ID de proyecto en GCP"                # Cambia esto si tu ID real es otro
-$REGION = "us-central1" # o la region que prefieras
-$REPO_NAME = "Nombre de tu repositorio de Artifact Registry"
-$IMAGE_NAME = "nombre de tu imagen Docker" # Por ejemplo, "model-lsc-api"
-$SERVICE_NAME = "nombre de tu servicio en Cloud Run" # Por ejemplo, "mi-proyecto-api"
-$PORT = 5000 # Puerto en el que tu aplicación escucha por defecto con flask
+$PROJECT_ID = "id-proyecto-gcp"                # Cambia esto si tu ID real es otro
+$REGION = "us-central1"
+$REPO_NAME = "model-api-repo"
+$IMAGE_NAME = "model-lsc-api"
+$SERVICE_NAME = "model-lsc-api"
+$PORT = 5000
 
 # LOGIN Y CONFIGURACIÓN
 gcloud auth login

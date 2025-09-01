@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  model-lsc-api:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - FLASK_ENV=development
+    volumes:
+      - ./models:/app/models
+      - ./test:/app/test
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Servicio opcional para testing con datos de ejemplo
+  test-client:
+    image: curlimages/curl:latest
+    depends_on:
+      - model-lsc-api
+    command: >
+      sh -c "
+        echo 'Esperando que la API esté lista...' &&
+        sleep 10 &&
+        echo 'Probando health check...' &&
+        curl -f http://model-lsc-api:5000/ &&
+        echo 'API está funcionando correctamente'
+      "
+    restart: "no"
